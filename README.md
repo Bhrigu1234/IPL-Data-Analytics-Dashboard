@@ -92,7 +92,7 @@ streamlit run app.py
 ### Player Analysis
 ![Batsman Bowler Analysis](screenshots/Batsman_Bowler_Analysis.png)
 ![Most Successful Pairs](screenshots/Most_Successful_Pairs.png)
-![PowerPlay vs Middle Overs vs Dealth Overs](screenshots/Over_Analysis.png)
+![PowerPlay vs Middle Overs vs Death Overs](screenshots/Over_Analysis.png)
 ![Player Analysis](screenshots/player_analysis.png)
 ![Team Summary](screenshots/Team_wise_summary.png)
 
@@ -108,7 +108,65 @@ streamlit run app.py
 
 ---
 
+## 🏗 Project Architecture
+
+This project follows a modular 3-layer architecture ensuring separation of concerns and scalable design.
+
+### 1️⃣ Data Layer – MySQL Database
+- Stores structured IPL datasets (ball-by-ball & match metadata)
+- Tables:
+  - `matches`
+  - `matches_details`
+- Implements relational queries using:
+  - Aggregations (SUM, COUNT)
+  - Subqueries
+  - Window Functions (DENSE_RANK, ROW_NUMBER)
+
+---
+
+### 2️⃣ Backend Layer – Python (dbhelper.py)
+- Handles secure database connection
+- Encapsulates SQL queries inside class methods
+- Follows OOP principles for modular and reusable design
+- Acts as middleware between database and frontend
+
+---
+
+### 3️⃣ Frontend Layer – Streamlit (app.py)
+- Provides interactive dashboard interface
+- Implements dynamic filters (Season, Team, Player)
+- Displays computed analytics using metrics & dataframes
+- Enables real-time data-driven insights
+
+---
+
+## 🔄 End-to-End Data Flow
+```
+User Interaction (Streamlit UI)
+        ↓
+Python Backend (DB Class Methods)
+        ↓
+SQL Query Execution (MySQL)
+        ↓
+Aggregated / Processed Results
+        ↓
+Visualization in Dashboard
+
+```
+---
+
+## 📈 Future Improvements
+
+- Deploy dashboard using Streamlit Cloud / Render
+- Add caching for query optimization
+- Implement player comparison feature
+- Add interactive charts (Plotly integration)
+- Create automated ETL pipeline for data refresh
+
+
 ## 👨‍💻 Author
 
 Bhrigu Kumar Das
 Aspiring Data Engineer | SQL | Python | Data Analytics
+🔗 GitHub: https://github.com/BHRIGU1234
+🔗 LinkedIn: linkedin.com/in/bhrigu-kumar-das-bb5894276
